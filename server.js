@@ -13,6 +13,11 @@ app.use(bodyParser.json());
 //Port
 var port = process.env.PORT || 8085;
 
+app.get('/', function(req, res) {
+    res.setHeader('Content-Type', 'application/json');
+    res.json({ message: 'This is the simple mbmbam search api. To use, make a request to /api/searchTerm' });
+});
+
 //Routes
 var router = express.Router();
 
@@ -21,7 +26,7 @@ app.use('/api', router);
 
 router.get('/', function(req, res) {
     res.setHeader('Content-Type', 'application/json');
-    res.json({ message: 'This is the simple mbmbam search api.' });
+    res.json({ message: 'This endpoint is pointless right now. Try /api/searchTerm but obviously replace searchTerm with your searchTerm' });
 });
 
 router.get('/:searchTerm', function(req, res) {
