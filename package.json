@@ -2,11 +2,11 @@
   "name": "mbmbam-search",
   "version": "0.0.1",
   "description": "A simple api that uses fuzzy search to search for MBMBAM episodes",
-  "main": "server.js",
+  "main": "app.js",
   "author": "omegadeep10",
   "license": "MIT",
   "scripts": {
-    "build": "nodemon server.js"
+    "build": "nodemon app.js"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
@@ -15,5 +15,8 @@
     "express": "^4.14.0",
     "fuse.js": "^2.6.1",
     "request": "^2.79.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }
