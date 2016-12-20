@@ -15,8 +15,15 @@ router.get('/', function(req, res) {
 
 
 // -> <url_to_app>/api/searchTerm
-router.get('/:searchTerm', function(req, res) {
+router.get('/search', function(req, res) {
     res.setHeader('Content-Type', 'application/json');
+
+    var searchTerm = req.query.q;
+    if (!searchTerm) {
+    	res.status(400);
+    	res.json({ message: "Invalid search query." });
+    }
+
     var url = "http://mbmbam.throwing-stones.net/list.php";
 
     request(url, function(error, response, html) {
@@ -61,7 +68,7 @@ router.get('/:searchTerm', function(req, res) {
             keys: ["title", "talking_points"]
         };
         var fuse = new Fuse(data, options);
-        var result = fuse.search(req.params.searchTerm);
+        var result = fuse.search(searchTerm);
 
         res.json(result);
     });
