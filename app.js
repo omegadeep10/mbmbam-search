@@ -1,5 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var pg = require('pg');
 
 
 //init app
@@ -26,3 +27,11 @@ app.use('/api', api_router);
 //start app
 app.listen(port);
 console.log(`App started on port ${port}`);
+console.log(process.env.DATABASE_URL);
+
+pg.connect(process.env.DATABASE_URL, function(err, client) {
+    if (err) throw err;
+    console.log("Connection successful");
+
+    client.query('SELECT * FROM ')
+})

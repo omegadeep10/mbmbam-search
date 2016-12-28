@@ -6,7 +6,9 @@
   "author": "omegadeep10",
   "license": "MIT",
   "scripts": {
-    "build": "nodemon app.js"
+    "build": "nodemon app.js",
+    "start": "node app.js",
+    "update_db_url": "heroku config:get CONFIG-VAR-NAME -s  >> .env"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
@@ -14,6 +16,7 @@
     "ent": "^2.2.0",
     "express": "^4.14.0",
     "fuse.js": "^2.6.1",
+    "pg": "^6.1.2",
     "request": "^2.79.0"
   },
   "devDependencies": {
