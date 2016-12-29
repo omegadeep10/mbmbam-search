@@ -29,9 +29,14 @@ app.listen(port);
 console.log(`App started on port ${port}`);
 console.log(process.env.DATABASE_URL);
 
+pg.defaults.ssl = true;
 pg.connect(process.env.DATABASE_URL, function(err, client) {
     if (err) throw err;
     console.log("Connection successful");
 
-    client.query('SELECT * FROM ')
-})
+    client
+        .query('SELECT * FROM episodes')
+        .on('row', function(row) {
+            console.log(JSON.stringify(row));
+        });
+});

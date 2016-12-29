@@ -10,7 +10,7 @@ var router = express.Router();
 // -> <url_to_app>/api/
 router.get('/', function(req, res) {
     res.setHeader('Content-Type', 'application/json');
-    res.json({ message: 'This endpoint is pointless right now. Try /api/searchTerm but obviously replace searchTerm with your searchTerm' });
+    res.json({ message: 'This endpoint is pointless right now. Try /api/search but obviously replace searchTerm with your searchTerm' });
 });
 
 
@@ -21,7 +21,7 @@ router.get('/search', function(req, res) {
     var searchTerm = req.query.q;
     if (!searchTerm) {
     	res.status(400);
-    	res.json({ message: "Invalid search query." });
+    	res.json({ message: "Invalid search query. Please pass in your input as as a querystring variable titled q. Example: /api/search?q=Teen%20Google" });
     }
 
     var url = "http://mbmbam.throwing-stones.net/list.php";
